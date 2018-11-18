@@ -5,15 +5,30 @@
 
 import java.io.*;
 import java.util.*;
-public class jump {
+public class CandidateCode {
   static int r= 1;
   static int JumpCalc(int x, int y, int h){
-    r = 1;
-    h = h - (x-y);
-    r += h/(x-y);
-    if(h%(x-y) > 1)
-    r++;
+    if(h<=x){
+      return 1;
+    }
+    r = h/x;
+    r--;
+    h = h - r*(x-y);
+    while(true){
+      if(h<=0){
+        break;
+      }
+      else if(h<=x){
+        r++;
+        break;
+      }
+      else{
+        h = h - x + y;
+        r++;
+      }
+    }
     return r;
+
   }
     public static void main(String args[] ) throws Exception {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
