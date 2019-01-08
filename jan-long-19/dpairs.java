@@ -9,19 +9,38 @@ public class dpairs{
       int m = Integer.parseInt(s[1]);
       int a[] = new int[n];
       int b[] = new int[m];
-      int p = 1;
       String sa[] = br.readLine().trim().split(" ");
       String sb[] = br.readLine().trim().split(" ");
-      HashSet<Integer> sea = new HashSet<>();
-      HashSet<Integer> seb = new HashSet<>();
+      int minb = 0;
+      int min = Integer.MAX_VALUE;
+      int max = Integer.MIN_VALUE;
+      int maxa = 0;
       for(int i=0; i<n; i++){
         a[i] = Integer.parseInt(sa[i]);
-        sea.add(a[i]);
+        if(max<a[i]){
+          maxa= i;
+          max = a[i];
+        }
       }
+      min = Integer.MAX_VALUE;
       for(int i=0; i<m; i++){
         b[i] = Integer.parseInt(sb[i]);
-        seb.add(b[i]);
+        if(min>b[i]){
+          minb = i;
+          min = b[i];
+        }
       }
+        for(int i=0; i<m; i++){
+          System.out.println(maxa+" "+i);
+        }
+        for(int i=0; i<n; i++){
+          if(i==maxa){
+            continue;
+          }
+          System.out.println(i+" "+minb);
+        }
+
+      /*
       int yr = -1;
       for(int i=0; i<n; i++){
         if (!seb.contains(a[i])){
@@ -44,6 +63,7 @@ public class dpairs{
             break;
           }
       }
+      */
       /*
       for(int i=0; i<n; i++){
         for(int j=0; j<m; j++){
