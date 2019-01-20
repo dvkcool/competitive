@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class taxSmart{
+public class TestClass{
   static class FastReader
 {
     BufferedReader br;
@@ -89,30 +89,66 @@ public class taxSmart{
       int cases = s.nextInt();
       long a[] = new long[3];
       long e, f, g;
+            long bt[] = new long[15];
+
+
+
+        bt[0] = Long.parseLong("792903394");
+        bt[1] =  Long.parseLong("51012639");
+        bt[2] =  Long.parseLong("633283662");
+        bt[3] =  Long.parseLong("849971500");
+        bt[4] =  Long.parseLong("895455021");
+        bt[5] =  Long.parseLong("688358408");
+        bt[6] =  Long.parseLong("914794919");
+        bt[7] =  Long.parseLong("686365049");
+        bt[8] =  Long.parseLong("633283662");
+        bt[9] =  Long.parseLong("745426514");
+        bt[10] =  Long.parseLong("433784915");
+        bt[11] = Long.parseLong("689029720");
+        bt[12] = Long.parseLong("236279528");
+        bt[13] =  Long.parseLong("686365049");
+        bt[14] =  Long.parseLong("378710169");
       long b[] = new long[15];
-        b[0] = Long.parseLong("9299188169");
-        b[1] =  Long.parseLong("372753004656");
-        b[2] =  Long.parseLong("378266546");
-        b[3] =  Long.parseLong("513702773");
-        b[4] =  Long.parseLong("5595000");
-        b[5] =  Long.parseLong("9304783169");
-        b[6] =  Long.parseLong("373027159656");
-        b[7] =  Long.parseLong("16785000");
-        b[8] =  Long.parseLong("378266546");
-        b[9] =  Long.parseLong("519297773");
-        b[10] =  Long.parseLong("9824080942");
-        b[11] = Long.parseLong("398992048306");
-        b[12] = Long.parseLong("557893312");
-        b[13] =  Long.parseLong("16785000");
-        b[14] =  Long.parseLong("897564319");
+        b[0] = Long.parseLong("623016582");
+        b[1] =  Long.parseLong("740299351");
+        b[2] =  Long.parseLong("419076819");
+        b[3] =  Long.parseLong("170325468");
+        b[4] =  Long.parseLong("279647453");
+        b[5] =  Long.parseLong("902664035");
+        b[6] =  Long.parseLong("548808039");
+        b[7] =  Long.parseLong("838942359");
+        b[8] =  Long.parseLong("419076819");
+        b[9] =  Long.parseLong("449972921");
+        b[10] =  Long.parseLong("352636949");
+        b[11] = Long.parseLong("621780054");
+        b[12] = Long.parseLong("349918756");
+        b[13] =  Long.parseLong("838942359");
+        b[14] =  Long.parseLong("869049740");
       for(int i=0; i<cases; i++){
         //String s[] = br.readLine().trim().split(" ");
         a[0] = s.nextInt();
         a[1] = s.nextInt();
         a[2] = s.nextInt();
         int n = s.nextInt();
-        int r = n/102;
-        long w = 102;
+        int r = n/9999;
+        long w = 9999;
+
+        while(r>0){
+          e = ((((bt[0]*w - bt[1])%1000000007)*2) %1000000007) + ((bt[2]*a[0])%1000000007) + ((bt[3]*a[1])%1000000007) + ((bt[4]*a[2])%1000000007);
+          e = e %1000000007;
+          f = ((((bt[5]*(w+1) - bt[6])%1000000007)*2) %1000000007) + ((bt[7]*a[0])%1000000007) + ((bt[8]*a[1])%1000000007) + ((bt[9]*a[2])%1000000007);
+          f = f %1000000007;
+          g = ((((bt[10]*(w+2) - bt[11])%1000000007)*2) %1000000007) + ((bt[12]*a[0])%1000000007) + ((bt[13]*a[1])%1000000007) + ((bt[14]*a[2])%1000000007);
+          g = g%1000000007;
+          a[0] = e;
+          a[1] = f;
+          a[2] = g;
+          w = w+9999;
+          r--;
+        }
+        /*
+        r = n/999;
+        long w = 999;
 
         while(r>0){
           e = ((((b[0]*w - b[1])%1000000007)*2) %1000000007) + ((b[2]*a[0])%1000000007) + ((b[3]*a[1])%1000000007) + ((b[4]*a[2])%1000000007);
@@ -124,10 +160,11 @@ public class taxSmart{
           a[0] = e;
           a[1] = f;
           a[2] = g;
-          w = w+51;
+          w = w+999;
           r--;
         }
-        int y = (n/102)*102 +2;
+        */
+        int y = (n/9999)*9999 +2;
         solveMe(a, n, y);
 
 

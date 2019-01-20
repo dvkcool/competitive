@@ -127,7 +127,9 @@ public class taxSer{
         int y = n;
         while(y>=3){
            m = m + g;
-           ve = ve + (n-y)*g;
+           m = m %1000000007;
+           ve = ve + (((n-y)*g)%1000000007);
+           ve = ve %1000000007;
            y--;
            u = e;
            v = f;
