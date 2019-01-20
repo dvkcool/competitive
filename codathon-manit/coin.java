@@ -96,19 +96,19 @@ class coin {
             }
             a[rr]++;
         }
+        int max = Integer.MIN_VALUE;;
+        int maxi = -1;
         for(int j=0; j<m; j++){
             int rw = j;
             for(int l = m; l>0; l--){
                     b[rw] += (l*a[j]);
                     rw = (rw+1)%m;
-            }
-        }
-        int max = b[0];
-        int maxi = 1;
-        for(int j=1; j<m; j++){
-            if(b[j] > max){
-                max = b[j];
-                maxi = j+1;
+                    if(j==(m-1)){
+                      if(b[rw]>max){
+                        max = b[rw];
+                        maxi = rw + 1;
+                      }
+                    }
             }
         }
         bw.append(maxi+" "+max+"\n");
