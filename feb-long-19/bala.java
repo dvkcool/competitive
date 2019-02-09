@@ -8,48 +8,76 @@ public class bala{
       int cases = Integer.parseInt(br.readLine().trim());
       for(int i=0; i<cases; i++){
         String s = br.readLine().trim();
-        int mapm[] = new int[26];
-        int y = 0;
-        for(int j=0; j<s.length(); j++){
+        int a[] = new int[26];
+        int n = s.length();
+        int e = 0;
+        for(int j=0; j<n; j++){
           int d = s.charAt(j) - 'A';
-          if(mapm[d] != 0){
-            y++;
+          a[d]++;
+          if(a[d]==1){
+            e++;
           }
-          mapm[d]++;
         }
-        if(y==0){
+        if(e==n){
           bw.append("0\n");
           continue;
         }
-        Arrays.sort(mapm);
-        int summ[] = new int[26];
-        int sum = 0;
-        int c = 0;
+        Arrays.sort(a);
+        int se = 0;
+        int y = 0;
+        int sum[] = new int[26];
         for(int j=0; j<26; j++){
-          sum += mapm[j];
-          if(c==0  && sum != 0){
-            c = j;
-          }
-          summ[j] = sum;
+          se += a[j];
+          sum[j] = se;
         }
-        int n = s.length();
-        int mint = Integer.MAX_VALUE;
+        int min = Integer.MAX_VALUE;
         for(int j=1; j<=Math.sqrt(n); j++){
           if(n%j==0){
             int k = n/j;
-            if((c+j -1)<26 ){
-              if(mint > summ[c+j-1]){
-                mint = summ[c+j-1];
+              int sumless;
+              if(j<=26){
+                if(j==26){
+                  sumless = 0;
+                }
+                else{
+                  sumless = sum[25-j];
+                }
+                int t = 0;
+                for(int x=25; x>=0; x--){
+                  if(a[x]>k){
+                    t = t + a[x] -k;
+                  }
+                  else{
+                    break;
+                  }
+                }
+                if( (t+sumless) < min){
+                  min = (t+sumless);
+                }
               }
-            }
-            if((c+k -1)<26 ){
-              if(mint > summ[c+k-1]){
-                mint = summ[c+k-1];
+              if(k<=26 && k!=j){
+                if(k==26){
+                  sumless = 0;
+                }
+                else{
+                  sumless = sum[25-k];
+                }
+                int t = 0;
+                for(int x=25; x>=0; x--){
+                  if(a[x]>j){
+                    t = t + a[x] -j;
+                  }
+                  else{
+                    break;
+                  }
+                }
+                if( (t+sumless) < min){
+                  min = (t+sumless);
+                }
               }
-            }
           }
         }
-        bw.append(mint+"\n");
+        bw.append(min+"\n");
       }
       bw.flush();
       bw.close();
