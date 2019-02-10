@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 
-class coin {
+class TestClass {
       static class FastReader
 {
     BufferedReader br;
@@ -60,7 +60,6 @@ class coin {
     }
 }
     public static void main(String args[] ) throws Exception {
-       // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
        FastReader s=new FastReader();
       BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
       int cases = s.nextInt();
@@ -73,19 +72,15 @@ class coin {
         k = s.nextInt();
         int a[] = new int[m];
         int b[] = new int[m];
-
-        //bw.append(result+"\n");
         for(int j =0; j<r; j++){
             int p = s.nextInt();
             int cc = s.nextInt();
-            if(cc<=k){
-                int rr = p-1;
-                a[rr]++;
-                continue;
-            }
             int rtr = cc % (m + k-1);
             int rr = 0;
-            if(rtr ==0){
+            if(cc<=k){
+                rr = p-1;
+            }
+            else if(rtr ==0){
                 rr  = (p-1 + m-1)%m;
             }
             else if(rtr<=k){
@@ -96,25 +91,24 @@ class coin {
             }
             a[rr]++;
         }
-        int max = Integer.MIN_VALUE;;
-        int maxi = -1;
+        int maxi = 0;
         for(int j=0; j<m; j++){
-            int rw = j;
-            for(int l = m; l>0; l--){
+            b[j] = b[j] + m*a[j];
+            int rw = j+1;
+            for(int l = m-1; l>0 && rw<m; l--){
                     b[rw] += (l*a[j]);
-                    rw = (rw+1)%m;
-                    if(j==(m-1)){
-                      if(b[rw]>max){
-                        max = b[rw];
-                        maxi = rw + 1;
-                      }
-                    }
+                    b[j] += (rw-j)*a[rw];
+                    rw++;
+
+            }
+            if(b[maxi]<b[j]){
+                maxi = j;
             }
         }
-        bw.append(maxi+" "+max+"\n");
+        maxi++;
+        bw.append(maxi+" "+b[maxi-1]+"\n");
       }
       bw.flush();
       bw.close();
-
     }
 }

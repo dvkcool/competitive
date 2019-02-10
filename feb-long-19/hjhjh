@@ -1,0 +1,62 @@
+
+
+function calculate(equations)
+{
+a = eval(document.equations.W1.value)
+b = eval(document.equations.X1.value)
+c = eval(document.equations.Y1.value)
+d = eval(document.equations.Z1.value)
+e = eval(document.equations.C1.value)
+f = eval(document.equations.W2.value)
+g = eval(document.equations.X2.value)
+h = eval(document.equations.Y2.value)
+i = eval(document.equations.Z2.value)
+j = eval(document.equations.C2.value)
+k = eval(document.equations.W3.value)
+l = eval(document.equations.X3.value)
+m = eval(document.equations.Y3.value)
+n = eval(document.equations.Z3.value)
+o = eval(document.equations.C3.value)
+p = eval(document.equations.W4.value)
+q = eval(document.equations.X4.value)
+r = eval(document.equations.Y4.value)
+s = eval(document.equations.Z4.value)
+t = eval(document.equations.C4.value)
+
+<!--EVALUATING THE DELTA DETERMINANT -->
+delta = eval((a*g*m*s)+(a*h*n*q)+(a*i*l*r)-(a*i*m*q)-(a*g*n*r)-(a*h*l*s)-(f*b*m*s)-(f*c*n*q)-(f*d*l*r)+(f*d*m*q)+(f*b*n*r)+(f*c*l*s)+(k*b*h*s)+(k*c*i*q)+(k*d*g*r)-(k*d*h*q)-(k*b*i*r)-(k*c*g*s)-(p*b*h*n)-(p*c*i*l)-(p*d*g*m)+(p*d*h*l)+(p*b*i*m)+(p*c*g*n));
+document.output.prod.value = delta;
+<!--EVALUATING THE W NUMERATOR & ANSWER -->
+wnum = eval((e*g*m*s)+(e*h*n*q)+(e*i*l*r)-(e*i*m*q)-(e*g*n*r)-(e*h*l*s)-(j*b*m*s)-(j*c*n*q)-(j*d*l*r)+(j*d*m*q)+(j*b*n*r)+(j*c*l*s)+(o*b*h*s)+(o*c*i*q)+(o*d*g*r)-(o*d*h*q)-(o*b*i*r)-(o*c*g*s)-(t*b*h*n)-(t*c*i*l)-(t*d*g*m)+(t*d*h*l)+(t*b*i*m)+(t*c*g*n));
+wans = (wnum/delta);
+
+<!--EVALUATING THE X NUMERATOR & ANSWER -->
+xnum=
+eval((a*j*m*s)+(a*h*n*t)+(a*i*o*r)-(a*i*m*t)-(a*j*n*r)-(a*h*o*s)-(f*e*m*s)-(f*c*n*t)-(f*d*o*r)+(f*d*m*t)+(f*e*n*r)+
+(f*c*o*s)+(k*e*h*s)+(k*c*i*t)+(k*d*j*r)-(k*d*h*t)-(k*e*i*r)-
+(k*c*j*s)-(p*e*h*n)-(p*c*i*o)-(p*d*j*m)+(p*d*h*o)+(p*e*i*m)+
+(p*c*j*n));
+
+xans = (xnum/delta);
+
+<!--EVALUATING THE Y NUMERATOR & ANSWER -->
+ynum= eval((a*g*o*s)+(a*j*n*q)+(a*i*l*t)-(a*i*o*q)-(a*g*n*t)-(a*j*l*s)-(f*b*o*s)-(f*e*n*q)-(f*d*l*t)+(f*d*o*q)+(f*b*n*t)+
+(f*e*l*s)+(k*b*j*s)+(k*e*i*q)+(k*d*g*t)-(k*d*j*q)-(k*b*i*t)-
+(k*e*g*s)-(p*b*j*n)-(p*e*i*l)-(p*d*g*o)+(p*d*j*l)+(p*b*i*o)+
+(p*e*g*n));
+
+yans = (ynum/delta);
+
+<!--EVALUATING THE Z NUMERATOR & ANSWER -->
+znum=
+eval((a*g*m*t)+(a*h*o*q)+(a*j*l*r)-(a*j*m*q)-(a*g*o*r)-(a*h*l*t)-(f*b*m*t)-(f*c*o*q)-(f*e*l*r)+(f*e*m*q)+(f*b*o*r)+
+(f*c*l*t)+(k*b*h*t)+(k*c*j*q)+(k*e*g*r)-(k*e*h*q)-(k*b*j*r)-
+(k*c*g*t)-(p*b*h*o)-(p*c*j*l)-(p*e*g*m)+(p*e*h*l)+(p*b*j*m)+
+(p*c*g*o));
+
+zans = (znum/delta);
+document.output.w.value=" " + wans;
+document.output.x.value=" " + xans;
+document.output.y.value=" " + yans;
+document.output.z.value=" " + zans;
+}
