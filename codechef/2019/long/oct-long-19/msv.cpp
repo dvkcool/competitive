@@ -9,7 +9,6 @@ int main(){
     int a[1000001];
     int count[1000001];
     int b[1000001];
-    int d[1000001];
     int t, n, i, max_count, tp, j, k, m;
     cin>>t;
     while(t>0){
@@ -17,14 +16,12 @@ int main(){
       max_count=0;
       for(i=0; i<1000001; i++){
         a[i] = -1;
-        d[i] = 0;
         count[i] = 0;
       }
       cin>>n;
       for(i=0; i<n; i++){
         cin>>tp;
         a[tp] = i;
-        d[tp]++;
         b[i] = tp;
       }
       for(i=0; i<n; i++){
@@ -49,7 +46,7 @@ int main(){
         }
       }
       for(int i=0; i<n; i++){
-        max_count = max(max_count, count[i]+d[a[i]-1]);
+        max_count = max(max_count, count[i]);
       }
       cout<<max_count<<endl;
     }
