@@ -69,7 +69,6 @@ int main(){
                 maxQ = max(maxQ, easyCount + hardCount + hardDone+ easyDone);
             }
         }
-
       easyCount += itr->second[0];
       hardCount += itr->second[1];
       tr = itr->first;
@@ -101,11 +100,6 @@ int main(){
         //cout<<maxQ<<endl;
       }
     cout<<maxQ<<endl;
-
-
-
-
   }
-
   return 0;
 }
