@@ -3,23 +3,22 @@
 using namespace std;
 #define lli long long int
 void solveTest(){
-  // (ob) - (ab) = (b-0) - (a-b) = b - a + b = 2b - a
-  int a, k;
-  cin>>a>>k;
-  // 2b -a = k
-  // a-2b = k
-  int ans = 0;
-  if(a<k){
-    ans += (k-a);
-    a = k;
+  int n;
+  cin>>n;
+  lli a[n], b[n];
+  for(int i=0; i<n; i++){
+    cin>>a[i];
+    b[i] = a[i];
   }
-  if((k+a)%2==0){
-    cout<<ans<<"\n";
+  sort(a, a+n);
+  for(int i=0; i<n; i++){
+    if(a[i]!=b[i] && ((a[i]%a[0])!=0 || (b[i]%a[0]!=0)) ){
+      cout<<"NO\n";
+      return;
+    }
+    //cout<<a[i]<<" "<<b[i]<<"\n";
   }
-  else{
-    cout<<ans+1<<"\n";
-  }
-
+  cout<<"YES\n";
 }
 int main(){
   ios_base::sync_with_stdio(0);
